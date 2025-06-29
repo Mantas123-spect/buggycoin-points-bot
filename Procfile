@@ -1,1 +1,1 @@
-worker: python buggycoin-points-bot.
+worker: python buggycoin-points-bot.py
