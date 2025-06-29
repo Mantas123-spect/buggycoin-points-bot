@@ -1,8 +1,9 @@
 import logging
 import os
+import json
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
-from oauth2client.service_account import ServiceAccountCredentials
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+from google.oauth2 import service_account
 import gspread
 from dotenv import load_dotenv
 
@@ -12,7 +13,11 @@ TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 
 # --- Google Sheets setup ---
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('eastern-rider-464409-i8-931ccff4c768.json', scope)
+
+# Naujas būdas: paimame JSON tekstą iš env kintamojo
+json_data = os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON")
+info = json.loads(json_data)
+creds = service_account.Credentials.from_service_account_info(info, scopes=scope)
 client = gspread.authorize(creds)
 sheet = client.open("BuggyCoin Points").sheet1
 
@@ -54,7 +59,6 @@ async def submit(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     points = TASK_POINTS[task_type]
 
-    # Check if user exists
     try:
         user_cells = sheet.findall(username)
         if user_cells:
