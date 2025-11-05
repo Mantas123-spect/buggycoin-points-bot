@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="lt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HypeCalc ✨</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background"></div>
+    <main class="wrapper">
+      <header class="header">
+        <h1>HypeCalc <span>✦</span></h1>
+        <p>
+          Modernus skaičiuotuvas su neon vibe, skirtas Z kartai. Skaičiuok,
+          kiek tik nori ir mėgaukis vizualais.
+        </p>
+      </header>
+      <section class="calculator" aria-label="Skaičiuotuvas">
+        <div class="display" role="status" aria-live="polite">
+          <div class="expression" id="expression">0</div>
+          <div class="result" id="result">0</div>
+        </div>
+        <div class="keys" role="group">
+          <button class="key key-func" data-action="clear">AC</button>
+          <button class="key key-func" data-action="sign">±</button>
+          <button class="key key-func" data-action="percent">%</button>
+          <button class="key key-ops" data-action="divide">÷</button>
+
+          <button class="key" data-value="7">7</button>
+          <button class="key" data-value="8">8</button>
+          <button class="key" data-value="9">9</button>
+          <button class="key key-ops" data-action="multiply">×</button>
+
+          <button class="key" data-value="4">4</button>
+          <button class="key" data-value="5">5</button>
+          <button class="key" data-value="6">6</button>
+          <button class="key key-ops" data-action="subtract">−</button>
+
+          <button class="key" data-value="1">1</button>
+          <button class="key" data-value="2">2</button>
+          <button class="key" data-value="3">3</button>
+          <button class="key key-ops" data-action="add">+</button>
+
+          <button class="key key-long" data-value="0">0</button>
+          <button class="key" data-value=".">.</button>
+          <button class="key key-ops" data-action="equals">=</button>
+        </div>
+      </section>
+      <footer class="footer">
+        <button class="glow-switch" id="glowToggle" aria-pressed="true">
+          Glow režimas
+        </button>
+        <p>#StayHyped</p>
+      </footer>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
